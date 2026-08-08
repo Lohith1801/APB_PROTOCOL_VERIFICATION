@@ -1,6 +1,4 @@
-`include"bridge_interface.sv"
-`include"drv_transaction.sv"
-`include""
+
 class driver;
 
 	//static var to count the number of transactions sent 
@@ -13,11 +11,25 @@ class driver;
 	mailbox #(drv_transaction) mbx_drv2scr;
 	virtual bridge_interface.DRV v_binf;
 
-	//Constructor Function and local handle connectivity to env handles
+	covergroup cg;
+		cp_write_read: coverpoint drv_tx.write_read;
+		cp_addr_in: coverpoint drv_tx.addr_in{
+			bins addr_in_arr[] = {[0:15]};
+		}
+		
+		cross cp_write_read,cp_addr_in;
+		cp_strb_in: coverpoint drv_tx.strb_in{
+			bins strb_in_arr[] = {[0:15]};
+		}
+	endgroup
+
+        //Constructor Function and local handle connectivity to env handles
+
 	function new(mailbox #(drv_transaction) mbx_gen2drv, mailbox #(drv_transaction) mbx_drv2scr, virtual bridge_interface v_binf);
 		this.mbx_gen2drv = mbx_gen2drv;
 		this.v_binf = v_binf;
 		this.mbx_drv2scr = mbx_drv2scr;
+		cg = new();
 	endfunction
 
 	//Driver start or run task
@@ -42,7 +54,7 @@ class driver;
 			@(v_binf.cb2drv);
 
 			//PRESETn assert condition
-			if(v_binf.PRESETn) begin
+			if(!v_binf.PRESETn) begin
 				$display("@%0t [DRV]: PRESETn is asserted",$time);
 
 				//driving ideal value(0) to the DUT input ports
@@ -59,16 +71,16 @@ class driver;
 				$display("@%0t [DRV]: Driving the drv_transaction packet to DUT",$time);
 				count++;
 				drv_tx.print("APB TRANSACTION",count); 
-				
+									
 				//driving transaction pack as pin level signals to DUT
-				v_binf.cb2drv.transfer <= drv_tx.transfer;
-				v_binf.cb2drv.write_read <= drv_tx.write_read;
-				v_binf.cb2drv.addr_in <= drv_tx.addr_in;
-				v_binf.cb2drv.wdata_in <= drv_tx.wdata_in;
-				v_binf.cb2drv.strb_in <= drv_tx.strb_in;
-
+					v_binf.cb2drv.transfer <= 1;
+					v_binf.cb2drv.write_read <= drv_tx.write_read;
+					v_binf.cb2drv.addr_in <= drv_tx.addr_in;
+					v_binf.cb2drv.wdata_in <= drv_tx.wdata_in;
+					v_binf.cb2drv.strb_in <= drv_tx.strb_in;
+					cg.sample();
 			end
-			
+			mbx_drv2scr.put(drv_tx);	
 			//Watch Dog timer logic to wait dor transfer_done
 			fork 
 				begin
@@ -76,13 +88,19 @@ class driver;
 				end
 
 				begin
-					repeat(100) begin
+					repeat(25) begin
 						@(v_binf.cb2drv);
 					end
 					$fatal("@%0t [DRV]: transfer_done IS NOT ASSERTED BY DUT afetr drv_transaction been sent",$time);
 				end
 			join_any
-			disable fork
+			disable fork; 
+			
+			//End the driver task when number of transactions reaches maximum count TX_COUNT
+			if(count == `TX_COUNT)
+				return;
+
+
 		end
 	endtask
 endclass	

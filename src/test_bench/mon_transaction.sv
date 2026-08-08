@@ -1,4 +1,3 @@
-`include"defines.svh"
 class mon_transaction;
 	
 	//monitor input
@@ -14,25 +13,27 @@ class mon_transaction;
 	bit PSLVERR;
 	bit [`DATA_WIDTH-1:0]PRDATA;
 
-	function void print(string test_type, string MASTER_state, int count);
-		$display("---------------------SLAVE TRANSACTION %d---------------------",count);
+	//Transaction INFO
+	function void info(string test_type, string MASTER_state, int count);
+		$display("@%0t [MON]---------------------SLAVE TRANSACTION %d---------------------",$time,count);
 		$display("SLV_TEST_TYPE: %s",test_type);
 		$display("MASTER stateL %s",MASTER_state);
 
-		$display("Handshaking SIGNALs.........");
+		$display("=====Handshaking Signals=====");
 		$display("PSEL = %b",PSEL);
 		$display("PENABLE = %b",PENABLE);
 		$display("PREADY = %b",PREADY);
-		$display("PSLVERR = %b",PSLVERR);
-		$display();
 
-		$display("Data SIGNALs.........");
+		$display("=========DATA Signals========");
 		$display("PADDR = %d",PADDR);
-		$display("PWDATA = %d",PWDATA);
-		$display("PSTRB = %d",PSTRB);
 		$display("PRDATA = %d",PRDATA);
+		$display("PSTRB = %d",PSTRB);
+		$display("PWDATA = %d",PWDATA);
+
 		$display();
+	endfunction
 		
+				
 	//transaction copy function
 	function mon_transaction copy();
 		copy = new();

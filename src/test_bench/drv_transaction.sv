@@ -1,4 +1,3 @@
-`include "defines.svh"
 
 typedef enum {READ, WRITE, RANDOM} APB_operation;
 typedef enum {LOW, HIGH} address_range;
@@ -22,6 +21,8 @@ class drv_transaction;
         logic [`ADDR_WIDTH-1:0] rdata_out;
         logic error;
 
+	
+
         //QUEUE to store addr_in
         static int Q[$];
 
@@ -30,11 +31,15 @@ class drv_transaction;
                 !(addr_in inside {Q});
         }
 	
+	/*
 	//constraint to set tranfer with higher probability of 1
         constraint set_transfer {
-                transfer dist { 1 := 65, 0 := 35 };
+             //   transfer dist { 1 := 65, 0 := 35 };
+		transfer == 1;
         }
-
+	*/
+	
+	
 	//constraint for APB operations
         constraint set_operation {
                 (operation == READ)   -> write_read == 0;
@@ -63,14 +68,14 @@ class drv_transaction;
                         Q.delete();
                 end
         endfunction
-
+	
 
         function void print(string str = "APB TRANSACTION",int count);
                 $display("----------BRIDGE TRANSACTION  %d ----------",count);
                 $display("OPERATION: %s", operation.name());
                 $display("ADDRESS RANGE: %s", addr_in_range.name());
-                $display("[DRV_tx]: transfer = %0b write_read = %0b addr_in = %0d wdata_in = %0d strb_in = %0d",
-                          transfer, write_read, addr_in, wdata_in, strb_in);
+                $display("@%0t [DRV_tx]: transfer = %0b write_read = %0b addr_in = %0d wdata_in = %0d strb_in = %0d \n tranfer_done = %b rdata_out = %d" ,$time,
+                          transfer, write_read, addr_in, wdata_in, strb_in, transfer_done, rdata_out);
         endfunction
 
         function drv_transaction copy();

@@ -1,0 +1,376 @@
+# vsim -vopt work.test_bench -voptargs="+acc=npr" -assertdebug -l log_file.log -coverage -c -do "coverage save -onexit -assert -directive -cvg -codeAll ucdb_file.ucdb; run -all; exit" 
+# Start time: 11:01:14 on Aug 08,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: tb.sv(15): (vopt-2685) [TFMPC] - Too few port connections for 'dut'.  Expected 19, found 18.
+# ** Warning: tb.sv(15): (vopt-2718) [TFMPC] - Missing connection for port 'wdata_in'.
+# //  Questa Sim
+# //  Version 10.6c linux Jul 25 2017
+# //
+# //  Copyright 1991-2017 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading sv_std.std
+# Loading work.bridge_interface(fast)
+# Loading work.mon_interface(fast)
+# Loading work.tb_pac(fast)
+# Loading work.test_bench(fast)
+# Loading work.bridge_interface(fast)
+# Loading work.mon_interface(fast)
+# Loading work.apb_master(fast)
+# Loading work.apb_assertions(fast)
+# ** Warning: (vsim-8441) monitor.sv(46): Clocking block output v_minf.cb2mon.PRDATA is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# ** Warning: (vsim-8441) monitor.sv(44): Clocking block output v_minf.cb2mon.PREADY is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# ** Warning: (vsim-8441) monitor.sv(45): Clocking block output v_minf.cb2mon.PSLVERR is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# ** Warning: (vsim-8441) monitor.sv(46): Clocking block output v_minf.cb2mon.PRDATA is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# ** Warning: (vsim-8441) monitor.sv(45): Clocking block output v_minf.cb2mon.PSLVERR is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# ** Warning: (vsim-8441) monitor.sv(44): Clocking block output v_minf.cb2mon.PREADY is not legal in this
+# or another expression.
+#    Time: 0 ns  Iteration: 0  Region: /tb_pac File: package.sv
+# coverage save -onexit -assert -directive -cvg -codeAll ucdb_file.ucdb
+#  run -all
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [GEN]: Packet generated mailboxed to Driver (bridge)
+# @10 [DRV]: Waiting for drv_transaction...
+# @10 [DRV]: Got drv_transaction from mbx_gen2drv
+# @15 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @15 [MON]: MASTER is in IDEAL state..
+# @15 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            1 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: HIGH
+# @15 [DRV_tx]: transfer = 0 write_read = 1 addr_in = 9 wdata_in = 12 strb_in = 2 
+#  tranfer_done = x rdata_out =  x
+# @25 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @25 [MON]: MASTER is in SETUP state..
+# @35 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @35 [MON]: MASTER is in ACCESS state..
+# @35 [MON]---------------------SLAVE TRANSACTION           1---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR =  9
+# PRDATA =          0
+# PSTRB =  2
+# PWDATA =          0
+#  
+# @45 [DRV]: Waiting for drv_transaction...
+# @45 [DRV]: Got drv_transaction from mbx_gen2drv
+# @45 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @45 [MON]: MASTER is in IDEAL state..
+# @55 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @55 [MON]: MASTER is in SETUP state..
+# @55 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            2 ----------
+# OPERATION: READ
+# ADDRESS RANGE: HIGH
+# @55 [DRV_tx]: transfer = 0 write_read = 0 addr_in = 14 wdata_in = 9 strb_in = 5 
+#  tranfer_done = x rdata_out =  x
+# @65 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @65 [MON]: MASTER is in ACCESS state..
+# @65 [MON]---------------------SLAVE TRANSACTION           2---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR =  9
+# PRDATA =          0
+# PSTRB =  2
+# PWDATA =          0
+#  
+# @75 [DRV]: Waiting for drv_transaction...
+# @75 [DRV]: Got drv_transaction from mbx_gen2drv
+# @75 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @75 [MON]: MASTER is in IDEAL state..
+# @85 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @85 [MON]: MASTER is in SETUP state..
+# @85 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            3 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: LOW
+# @85 [DRV_tx]: transfer = 0 write_read = 1 addr_in = 2 wdata_in = 8 strb_in = 4 
+#  tranfer_done = x rdata_out =  x
+# @95 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @95 [MON]: MASTER is in ACCESS state..
+# @95 [MON]---------------------SLAVE TRANSACTION           3---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR = 14
+# PRDATA =      43981
+# PSTRB =  0
+# PWDATA =          0
+#  
+# @105 [DRV]: Waiting for drv_transaction...
+# @105 [DRV]: Got drv_transaction from mbx_gen2drv
+# @105 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @105 [MON]: MASTER is in IDEAL state..
+# @115 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @115 [MON]: MASTER is in SETUP state..
+# @115 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            4 ----------
+# OPERATION: READ
+# ADDRESS RANGE: HIGH
+# @115 [DRV_tx]: transfer = 0 write_read = 0 addr_in = 15 wdata_in = 10 strb_in = 8 
+#  tranfer_done = x rdata_out =  x
+# @125 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @125 [MON]: MASTER is in ACCESS state..
+# @125 [MON]---------------------SLAVE TRANSACTION           4---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR =  2
+# PRDATA =      43981
+# PSTRB =  4
+# PWDATA =          0
+#  
+# @135 [DRV]: Waiting for drv_transaction...
+# @135 [DRV]: Got drv_transaction from mbx_gen2drv
+# @135 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @135 [MON]: MASTER is in IDEAL state..
+# @145 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @145 [MON]: MASTER is in SETUP state..
+# @145 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            5 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: LOW
+# @145 [DRV_tx]: transfer = 1 write_read = 1 addr_in = 0 wdata_in = 8 strb_in = 15 
+#  tranfer_done = x rdata_out =  x
+# @155 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @155 [MON]: MASTER is in ACCESS state..
+# @155 [MON]---------------------SLAVE TRANSACTION           5---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR = 15
+# PRDATA =      43981
+# PSTRB =  0
+# PWDATA =          0
+#  
+# @165 [DRV]: Waiting for drv_transaction...
+# @165 [DRV]: Got drv_transaction from mbx_gen2drv
+# @165 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @165 [MON]: MASTER is in IDEAL state..
+# @175 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @175 [MON]: MASTER is in SETUP state..
+# @175 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            6 ----------
+# OPERATION: READ
+# ADDRESS RANGE: HIGH
+# @175 [DRV_tx]: transfer = 0 write_read = 0 addr_in = 13 wdata_in = 7 strb_in = 1 
+#  tranfer_done = x rdata_out =  x
+# @185 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @185 [MON]: MASTER is in ACCESS state..
+# @185 [MON]---------------------SLAVE TRANSACTION           6---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR =  0
+# PRDATA =      43981
+# PSTRB = 15
+# PWDATA =          0
+#  
+# @195 [DRV]: Waiting for drv_transaction...
+# @195 [DRV]: Got drv_transaction from mbx_gen2drv
+# @195 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @195 [MON]: MASTER is in IDEAL state..
+# @205 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @205 [MON]: MASTER is in SETUP state..
+# @205 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            7 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: LOW
+# @205 [DRV_tx]: transfer = 1 write_read = 1 addr_in = 3 wdata_in = 2 strb_in = 11 
+#  tranfer_done = x rdata_out =  x
+# @215 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @215 [MON]: MASTER is in ACCESS state..
+# @215 [MON]---------------------SLAVE TRANSACTION           7---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR = 13
+# PRDATA =      43981
+# PSTRB =  0
+# PWDATA =          0
+#  
+# @225 [DRV]: Waiting for drv_transaction...
+# @225 [DRV]: Got drv_transaction from mbx_gen2drv
+# @225 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @225 [MON]: MASTER is in IDEAL state..
+# @235 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @235 [MON]: MASTER is in SETUP state..
+# @235 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            8 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: HIGH
+# @235 [DRV_tx]: transfer = 1 write_read = 1 addr_in = 11 wdata_in = 11 strb_in = 15 
+#  tranfer_done = x rdata_out =  x
+# @245 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @245 [MON]: MASTER is in ACCESS state..
+# @245 [MON]---------------------SLAVE TRANSACTION           8---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR =  3
+# PRDATA =      43981
+# PSTRB = 11
+# PWDATA =          0
+#  
+# @255 [DRV]: Waiting for drv_transaction...
+# @255 [DRV]: Got drv_transaction from mbx_gen2drv
+# @255 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @255 [MON]: MASTER is in IDEAL state..
+# @265 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @265 [MON]: MASTER is in SETUP state..
+# @265 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION            9 ----------
+# OPERATION: READ
+# ADDRESS RANGE: HIGH
+# @265 [DRV_tx]: transfer = 1 write_read = 0 addr_in = 12 wdata_in = 4 strb_in = 5 
+#  tranfer_done = x rdata_out =  x
+# @275 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @275 [MON]: MASTER is in ACCESS state..
+# @275 [MON]---------------------SLAVE TRANSACTION           9---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR = 11
+# PRDATA =      43981
+# PSTRB = 15
+# PWDATA =          0
+#  
+# @285 [DRV]: Waiting for drv_transaction...
+# @285 [DRV]: Got drv_transaction from mbx_gen2drv
+# @285 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @285 [MON]: MASTER is in IDEAL state..
+# @295 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @295 [MON]: MASTER is in SETUP state..
+# @295 [DRV]: Driving the drv_transaction packet to DUT
+# ----------BRIDGE TRANSACTION           10 ----------
+# OPERATION: WRITE
+# ADDRESS RANGE: LOW
+# @295 [DRV_tx]: transfer = 1 write_read = 1 addr_in = 4 wdata_in = 2 strb_in = 5 
+#  tranfer_done = x rdata_out =  x
+# @305 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @305 [MON]: MASTER is in ACCESS state..
+# @305 [MON]---------------------SLAVE TRANSACTION          10---------------------
+# SLV_TEST_TYPE: IDEAL_TEST
+# MASTER stateL ACCESS
+# =====Handshaking Signals=====
+# PSEL = 1
+# PENABLE = 1
+# PREADY = 1
+# =========DATA Signals========
+# PADDR = 12
+# PRDATA =      43981
+# PSTRB =  0
+# PWDATA =          0
+#  
+# @315 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @315 [MON]: MASTER is in IDEAL state..
+# @325 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @325 [MON]: MASTER is in SETUP state..
+# @335 [MON]: Extracting pin level signals and converting them to mon_transaction packet
+# @335 [MON]: MASTER is in ACCESS state..
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR=  9, PWRITE = 1, PWDATA = 12, PSTRB =  2
+# recived data  PADDR=  9, PWRITE = 1, PWDATA =          0, PSTRB =  2
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR= 14, PWRITE = 0, PWDATA =  9, PSTRB =  5
+# recived data  PADDR=  9, PWRITE = 1, PWDATA =          0, PSTRB =  2
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR=  2, PWRITE = 1, PWDATA =  8, PSTRB =  4
+# recived data  PADDR= 14, PWRITE = 0, PWDATA =          0, PSTRB =  0
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR= 15, PWRITE = 0, PWDATA = 10, PSTRB =  8
+# recived data  PADDR=  2, PWRITE = 1, PWDATA =          0, PSTRB =  4
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR=  0, PWRITE = 1, PWDATA =  8, PSTRB = 15
+# recived data  PADDR= 15, PWRITE = 0, PWDATA =          0, PSTRB =  0
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR= 13, PWRITE = 0, PWDATA =  7, PSTRB =  1
+# recived data  PADDR=  0, PWRITE = 1, PWDATA =          0, PSTRB = 15
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR=  3, PWRITE = 1, PWDATA =  2, PSTRB = 11
+# recived data  PADDR= 13, PWRITE = 0, PWDATA =          0, PSTRB =  0
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR= 11, PWRITE = 1, PWDATA = 11, PSTRB = 15
+# recived data  PADDR=  3, PWRITE = 1, PWDATA =          0, PSTRB = 11
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR= 12, PWRITE = 0, PWDATA =  4, PSTRB =  5
+# recived data  PADDR= 11, PWRITE = 1, PWDATA =          0, PSTRB = 15
+# [SCR] :FAILED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# expected data  PADDR=  4, PWRITE = 1, PWDATA =  2, PSTRB =  5
+# recived data  PADDR= 12, PWRITE = 0, PWDATA =          0, PSTRB =  0
+# --------------------------------------SIMUALTION REPORT-----------------------------------------
+# PASS COUNT =           0
+# FAIL COUNT =          10
+# PASS PERCENTAFE = 0.000000
+# --------------------------------------------------------------------ASSERTION REPORT--------------------------------------------------------------------
+# [ASR] :stable_signals_at_setup_test assertion failed!!!
+# [ASR] : Wrong state after preday and transfer assert!!!
+# ** Note: $finish    : tb.sv(69)
+#    Time: 635 ns  Iteration: 0  Instance: /test_bench
+# Saving coverage database on exit...
+# End time: 11:01:15 on Aug 08,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 8

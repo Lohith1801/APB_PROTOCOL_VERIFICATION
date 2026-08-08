@@ -1,5 +1,3 @@
-`include"defines.svh"
-`include"drv_transaction.sv"
 class generator;
 	
 	//handle declaration
@@ -21,12 +19,12 @@ class generator;
 			//Randomization PASS condition
 			assert(drv_tx.randomize()) begin
 				mbx_gen2drv.put(drv_tx.copy());
-				$display("[GEN]: Packet generated mailboxed to Driver (bridge)");
+				$display("@%0t [GEN]: Packet generated mailboxed to Driver (bridge)",$time);
 			end
 
 			//Randomization FAIL condition
 			else begin
-				$display("[GEN]: Randomization FAILED!!");
+				$display("@%0t [GEN]: Randomization FAILED!!",$time);
 			end
 		end
 	endtask
